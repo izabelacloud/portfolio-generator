@@ -92,17 +92,19 @@ const promptProject = portfolioData => {
     .then(projectData => {
         portfolioData.projects.push(projectData);
         if (projectData.confirmAddProject) {
-            return promptProject(portfolioData)
+          return promptProject(portfolioData);
         } else {
-            return portfolioData;
+          return portfolioData;
         }
-    })
+      });
 }
 
 promptUser()
-    .then(answers => console.log(answers))
     .then(promptProject)
-    .then(projectAnswers => console.log(projectAnswers));
+    .then(portfolioData => {
+        console.log(portfolioData)
+    });
+    // .then(projectAnswers => console.log(projectAnswers));
    
 
 
