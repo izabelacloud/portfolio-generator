@@ -36,12 +36,27 @@ const promptUser = () => {
         {
             type: "input",
             name: "github",
-            message: "Enter your GitHub Username"
+            message: "Enter your GitHub Username (Required)",
+            validate: GitHubUsernameInput => {
+                if(GitHubUsernameInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your GitHub Username!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: "confirm",
+            name: "confirmAbout",
+            message: "Would you like to enter some information about yourself for an 'About' section?",
+            default: true
         },
         {
             type: "input",
             name: "about",
-            message: "Provide some information about yourself:"           
+            message: "Provide some information about yourself:",
+            when: ({confirmAbout}) => confirmAbout           
         }
 
     ])
@@ -71,7 +86,16 @@ const promptProject = portfolioData => {
         {
             type: "input",
             name: "description",
-            message: "Provide a description of the project (Required)"
+            message: "Provide a description of the project (Required)",
+            validate: ProjectDescriptionInput => {
+                if(ProjectDescriptionInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your Project Description!");
+                    return false;
+                }
+            }
+            
         },
         {
             type: "checkbox",
@@ -82,7 +106,15 @@ const promptProject = portfolioData => {
         {
             type: "input",
             name: "link",
-            message: "Enter the GitHub link to your project. (Required)"
+            message: "Enter the GitHub link to your project. (Required)",
+            validate: ProjectGitHubLink => {
+                if(ProjectGitHubLink) {
+                    return true;
+                } else {
+                    console.log("Please enter your Project GitHub Link!");
+                    return false;
+                }
+            }
         },
         {
             type: "confirm",
