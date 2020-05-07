@@ -13,7 +13,7 @@ const generatePage = (name, github) => {
       <h1>${name}</h1>
       <h2><a href="https://github.com/${github}">Github</a></h2>
     </body>
-    </html>
+    </html>con
     `;
   };
 
